@@ -1,0 +1,42 @@
+
+<div class="min-h-screen flex flex-col">
+<header class="bg-gray-800 text-white p-4">
+    <nav class="flex justify-between w-full mx-auto">
+        <div class="font-bold text-lg flex space-x-2">
+            <img src="assets/images/logo.png" routerLink="/" class="cursor-pointer" alt="logo">
+            <span routerLink="/" class="cursor-pointer">Blog CMS</span>
+        </div>
+        <div class="space-x-4">
+            <a routerLink="/" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true}">Home</a>
+            <a routerLink="/posts" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true}">My Posts</a>
+            <ng-container *ngIf="authService.user(); else loginLink">
+                <button class="cursor-pointer" (click)="logout()">
+                    Logout 
+                </button>
+            </ng-container>
+            <ng-template #loginLink>
+                <a routerLink="/auth/login" routerLinkActive="underline" [routerLinkActiveOptions]="{exact:true}">Login</a>
+            </ng-template>
+        </div>
+    </nav>
+</header>
+
+<main class="p-10 max-w-7xl flex-grow min-w-full mx-auto min-h-screen">
+    <router-outlet></router-outlet>
+</main>
+
+<footer class="bg-gray-800 h-20 text-white p-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
+    <div>
+      &copy; {{ currentYear }} Blog CMS. All rights reserved.
+    </div>
+    <div class="space-x-4 hidden sm:block">
+      <a routerLink="/" class="hover:underline">Home</a>
+      <a routerLink="/posts" class="hover:underline">My Posts</a>
+    </div>
+    <div class="hidden sm:block text-gray-400">
+      Built with <span class="text-indigo-400 font-medium">Angular</span> & <span class="text-yellow-300 font-medium">Firebase</span>
+    </div>
+  </div>
+</footer>
+</div>

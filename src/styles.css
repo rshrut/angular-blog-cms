@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+/* @plugin "@tailwindcss/line-clamp"; */
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.error-snackbar {
+    --mdc-snackbar-container-color: rgb(228, 56, 56);  
+    --mat-snack-bar-button-color: white;
+  }
+  .success-snackbar{
+    --mdc-snackbar-container-color: rgb(19, 145, 19);  
+    --mat-snack-bar-button-color: white;
+  }
+.ql-toolbar.ql-snow {
+    background: blanchedalmond;
+}
+
+html{
+  overflow-y: scroll;
+}

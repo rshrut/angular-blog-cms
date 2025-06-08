@@ -1,21 +1,21 @@
 
 <div class="min-h-screen flex flex-col">
-<header class="bg-gray-800 text-white p-4">
+<header class="bg-gray-800 text-white px-8 py-4">
     <nav class="flex justify-between w-full mx-auto">
         <div class="font-bold text-lg flex space-x-2">
             <img src="assets/images/logo.png" routerLink="/" class="cursor-pointer" alt="logo">
-            <span routerLink="/" class="cursor-pointer">Blog CMS</span>
+            <span class="cursor-pointer" routerLink="/" class="cursor-pointer">Blog CMS</span>
         </div>
         <div class="space-x-4">
-            <a routerLink="/" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true}">Home</a>
-            <a routerLink="/posts" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true}">My Posts</a>
+            <a class="cursor-pointer" routerLink="/" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true}">Home</a>
+            <a class="cursor-pointer" routerLink="/posts" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true}">My Posts</a>
             <ng-container *ngIf="authService.user(); else loginLink">
                 <button class="cursor-pointer" (click)="logout()">
                     Logout 
                 </button>
             </ng-container>
             <ng-template #loginLink>
-                <a routerLink="/auth/login" routerLinkActive="underline" [routerLinkActiveOptions]="{exact:true}">Login</a>
+                <a class="cursor-pointer" routerLink="/auth/login" routerLinkActive="underline" [routerLinkActiveOptions]="{exact:true}">Login</a>
             </ng-template>
         </div>
     </nav>
@@ -25,8 +25,8 @@
     <router-outlet></router-outlet>
 </main>
 
-<footer class="bg-gray-800 h-20 text-white p-4">
-    <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
+<footer class="bg-gray-800 h-20 text-white px-8 py-4 flex items-center">
+    <div class="max-w-7xl min-w-full mx-auto flex justify-between items-center text-sm">
     <div>
       &copy; {{ currentYear }} Blog CMS. All rights reserved.
     </div>

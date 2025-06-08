@@ -4,5 +4,4 @@ import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, appConfig)
 .then(() => console.log("App bootstrapped ✅"))
-.catch((err) => console.error("Bootstrap error ❌", err));
-  // .catch((err) => console.error(err));
+.catch((err) => console.error("Bootstrap error", err));

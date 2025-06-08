@@ -34,16 +34,32 @@ export class PostService{
                     console.log("data",docSnap.data());
                     const post: Post = {
                         id: id,
-                        title: data['title'] || '',
-                        content: data['content'] || '',
                         authorName: data['authorName'] || '',
                         authorEmail: data['authorEmail'] || '',
-                        imageUrl: data['imageUrl'] || '',
-                        tags: data['tags'] || [],
                         published: data['published'] || false,
+                        publishedAt: data['publishedAt'] || '',
                         createdAt: data['createdAt'] || '',
-                        updatedAt: data['updatedAt'] || ''
-                    };
+                        updatedAt: data['updatedAt'] || '',
+
+                        // draft content
+                        draft: {
+                            title: data['draft']?.title || '',
+                            content: data['draft']?.content || '',
+                            imageUrl: data['draft']?.imageUrl || '',
+                            tags: data['draft']?.tags || [],
+                        },
+
+                        // published version (optional)
+                        publishedVersion: data['publishedVersion']
+                            ? {
+                                title: data['publishedVersion'].title || '',
+                                content: data['publishedVersion'].content || '',
+                                imageUrl: data['publishedVersion'].imageUrl || '',
+                                tags: data['publishedVersion'].tags || [],
+                                updatedAt: data['publishedVersion'].updatedAt || '',
+                            }
+                            : undefined,
+                        };
                     return post;
                 }
                 else{

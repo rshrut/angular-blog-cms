@@ -22,3 +22,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html{
   overflow-y: scroll;
 }
+
+.ql-container {
+  max-width: 100%;
+  overflow-x: hidden;
+  word-break: break-word;
+}
+
+.ql-editor {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+

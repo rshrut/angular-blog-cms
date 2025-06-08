@@ -23,7 +23,9 @@ export class HomeComponent implements OnInit{
 
   constructor(){
     this.posts$ = this.store.select(PostSelectors.selectAllPosts).pipe(
-      map(posts => (posts).filter(post => post.published))
+      map(posts => (posts).filter(post => !!post.publishedVersion).map(post => ({
+        ...post,...post.publishedVersion
+      })))
     );
     this.loading$ = this.store.select(PostSelectors.selectPostsLoading);
   }

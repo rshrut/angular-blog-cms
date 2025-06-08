@@ -1,12 +1,25 @@
 export interface Post{
     id: string;
-    title: string;
-    content: string;
     authorName: string;
     authorEmail: string;
-    imageUrl?: string;
-    tags: string[];
-    published: boolean;
     createdAt: string;
     updatedAt?: string;
+
+    published: boolean;
+    publishedAt?: string;
+
+    publishedVersion?:{
+        title: string;
+        content: string;
+        imageUrl?: string;
+        tags: string[];
+        updatedAt: string;
+    };
+
+    draft:{
+        title:string;
+        content:string;
+        imageUrl?:string;
+        tags:string[];
+    };
 }

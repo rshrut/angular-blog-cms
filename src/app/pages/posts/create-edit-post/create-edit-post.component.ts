@@ -61,7 +61,6 @@ export class CreateEditPostComponent {
     }
 
     const postId = this.route.snapshot.paramMap.get('id');
-    console.log("route",this.route.snapshot);
     
     if(postId){
       this.isEdit = true;
@@ -117,10 +116,8 @@ export class CreateEditPostComponent {
       })
     }
     else{
-      console.log("po",this.post);
       //for saving author field with current user
       this.authService.currentUser$.subscribe(user => {
-        console.log("user",user);
         const now = new Date().toISOString();
         const newPost: Post = {
           id: this.post.id,

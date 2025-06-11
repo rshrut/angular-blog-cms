@@ -33,8 +33,6 @@ export class PostsComponent implements OnInit{
       this.posts$,
       this.authService.currentUser$
     ]).pipe(
-            tap(([_, user]) => console.log(user)
-        ),
       map(([posts, user]) => 
         posts.filter(post => post.authorEmail === user?.email)
     )

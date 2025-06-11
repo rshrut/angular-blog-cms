@@ -21,8 +21,6 @@ export class PostDetailComponent implements OnInit{
   ngOnInit(){
     const id = this.route.snapshot.paramMap.get('id');
     if(id){
-      console.log("id",id);
-      
       this.post$ = this.store.select(selectPostById(id));
     }
   }

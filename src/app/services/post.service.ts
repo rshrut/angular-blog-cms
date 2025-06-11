@@ -30,8 +30,6 @@ export class PostService{
             map((docSnap) => {
                 if(docSnap.exists()){
                     const data = docSnap.data();
-                    console.log("docsnap",docSnap);
-                    console.log("data",docSnap.data());
                     const post: Post = {
                         id: id,
                         authorName: data['authorName'] || '',

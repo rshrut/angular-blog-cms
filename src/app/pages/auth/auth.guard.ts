@@ -10,7 +10,6 @@ export const authGuard: CanActivateFn = async(route, state) => {
   const user = await new Promise((resolve) => {
     onAuthStateChanged(auth, (user) => {
       resolve(user);
-      console.log("user resolved");
     });
   });
   

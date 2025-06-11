@@ -1,4 +1,4 @@
-<div *ngIf="post$ | async as post" class="w-full">
+<div *ngIf="post$ | async as post" class="w-full px-6">
         <div class="mt-4 text-4xl text-black font-bold">{{post.publishedVersion?.title}}
         </div>
         <div class="text-gray-700 text-md mt-2">
@@ -11,7 +11,7 @@
         </div>
         <div class="mt-6 prose max-w-none break-words" [innerHTML]="post.publishedVersion?.content">
         </div>
-        <div class="text-center">
+        <div class="text-center mt-8">
                 <a routerLink="/home" class="bg-sky-700 text-white py-2 px-4 rounded flex-none cursor-pointer hover:ring-1 hover:ring-gray-400 hover:bg-sky-800">Read More Blogs</a>
         </div>
 </div>

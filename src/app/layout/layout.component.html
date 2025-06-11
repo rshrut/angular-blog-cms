@@ -1,12 +1,29 @@
 
 <div class="min-h-screen flex flex-col">
-<header class="bg-gray-800 text-white px-8 py-4">
-    <nav class="flex justify-between w-full mx-auto">
-        <div class="font-bold text-lg flex space-x-2">
-            <img src="assets/images/logo.png" routerLink="/" class="cursor-pointer" alt="logo">
+<header class="bg-gray-800 text-white px-6 sm:px-8 py-4">
+    <nav class="max-w-7xl flex justify-between items-center mx-auto">
+        <div class="font-bold text-lg flex items-center space-x-2">
+            <img src="assets/images/logo.png" routerLink="/" class="h-8 w-8 cursor-pointer" alt="logo">
             <span class="cursor-pointer" routerLink="/" class="cursor-pointer">Blog CMS</span>
         </div>
-        <div class="space-x-4">
+        <button class="sm:hidden focus:outline-none" (click)="menuOpen = !menuOpen">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </button>
+
+        <!-- toggle -->
+
+
+        <label class="inline-flex items-center mb-5 cursor-pointer">
+        <input id="checkbox" type="checkbox" value="" class="sr-only peer">
+        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+        <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Default toggle</span>
+        </label>
+
+
+
+        <div class="hidden sm:flex items-center space-x-4">
             <a class="cursor-pointer" routerLink="/" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true}">Home</a>
             <a class="cursor-pointer" routerLink="/posts" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true}">My Posts</a>
             <ng-container *ngIf="authService.user(); else loginLink">
@@ -19,22 +36,35 @@
             </ng-template>
         </div>
     </nav>
+
+    <div class="sm:hidden mt-4 px-4 space-y-2" *ngIf="menuOpen">
+        <a class="block cursor-pointer" routerLink="/" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true}">Home</a>
+        <a class="block cursor-pointer" routerLink="/posts" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true}">My Posts</a>
+        <ng-container *ngIf="authService.user(); else loginLink">
+                <button class="cursor-pointer" (click)="logout()">
+                    Logout 
+                </button>
+        </ng-container>
+        <ng-template #loginLink>
+            <a class="cursor-pointer" routerLink="/auth/login" routerLinkActive="underline" [routerLinkActiveOptions]="{exact:true}">Login</a>
+        </ng-template>
+    </div>
 </header>
 
-<main class="p-10 max-w-7xl flex-grow min-w-full mx-auto min-h-screen">
+<main class="py-10 max-w-7xl w-full flex-grow mx-auto min-h-screen">
     <router-outlet></router-outlet>
 </main>
 
-<footer class="bg-gray-800 h-20 text-white px-8 py-4 flex items-center">
-    <div class="max-w-7xl min-w-full mx-auto flex justify-between items-center text-sm">
-    <div>
+<footer class="bg-gray-800 h-30 flex justify-center items-center md:h-20 text-white px-8 py-4">
+    <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row space-y-2 justify-between items-center text-sm">
+    <div class="text-center">
       &copy; {{ currentYear }} Blog CMS. All rights reserved.
     </div>
-    <div class="space-x-4 hidden sm:block">
+    <div class="text-center space-x-4">
       <a routerLink="/" class="hover:underline">Home</a>
       <a routerLink="/posts" class="hover:underline">My Posts</a>
     </div>
-    <div class="hidden sm:block text-gray-400">
+    <div class="text-center text-gray-400">
       Built with <span class="text-indigo-400 font-medium">Angular</span> & <span class="text-yellow-300 font-medium">Firebase</span>
     </div>
   </div>

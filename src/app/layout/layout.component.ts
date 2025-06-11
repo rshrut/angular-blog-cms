@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class LayoutComponent {
   public authService = inject(AuthService);
   public currentYear = new Date().getFullYear();
-
+  menuOpen = false;
 
   logout(){
     this.authService.logout();

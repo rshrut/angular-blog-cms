@@ -1,5 +1,7 @@
 {
   "firestore": {
+    "database": "(default)",
+    "location": "asia-south1",
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
@@ -20,7 +22,7 @@
       ]
     }
   ],
-   "emulators": {
+  "emulators": {
     "functions": {
       "port": 8678,
       "host": "localhost"
@@ -30,5 +32,19 @@
       "host": "localhost",
       "port": 4000
     }
+  },
+  "hosting": {
+    "public": "dist/angular-blog-cms/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   }
 }
